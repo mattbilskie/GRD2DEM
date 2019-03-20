@@ -1,0 +1,28 @@
+HoumaNavCanal_z2_edit_utm15.grd   
+0
+HoumaNavCanal_z2_edit_utm15
+15 
+0
+-1
+636585.0 
+3198830.0 
+949435.0
+3376467.0
+15
+2
+0
+
+! List of inputs shown above
+! mesh,grd,maxele.63
+! 0 = off, 1 = computer inundation depth
+! Output raster file - no extension
+! Output raster resolution
+! 0 = UTM coordinates, 1 = Geographic
+! multiplication factor
+! Latxmin
+! Longymin
+! Latxmax
+! Longymax
+! UTMZone
+! 2 = NAD83 (usually don't need to change)
+! Raster Output Type (0 = *.flt/hdr, 1 = *.img [must havd gdal installed])
