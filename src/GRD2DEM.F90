@@ -89,11 +89,11 @@
       INTEGER, ALLOCATABLE                :: NID(:),EID(:)
       INTEGER, ALLOCATABLE                :: NM(:,:)
 
-      CHARACTER*60                        :: gridfile
-      CHARACTER*60                        :: demfile
-      CHARACTER*60                        :: infile,ofile
-      CHARACTER*24                        :: AGRID
-      CHARACTER*70                        :: dumC
+      CHARACTER(60)                       :: gridfile
+      CHARACTER(60)                       :: demfile
+      CHARACTER(60)                       :: infile,ofile
+      CHARACTER(24)                       :: AGRID
+      CHARACTER(100)                      :: dumC
 
       REAL(8)                              :: gridsize
       REAL(8)                              :: mult_fac
@@ -541,12 +541,14 @@
       ENDDO
       DEALLOCATE(Raster_Z)
       rstx_sd = SQRT(rstx_sd/(counter-1))
-      OPEN(UNIT=15,FILE=TRIM(demfile)//'.stx',ACTION='WRITE',STATUS='UNKNOWN')
+      OPEN(UNIT=15,FILE=TRIM(demfile)//'.stx',ACTION='WRITE', &
+         STATUS='UNKNOWN')
       WRITE(15,'(I1,4(x,1pE20.10E3))')BAND,rstx_min,rstx_max,rstx_mean,rstx_sd
       CLOSE(15)
 
       IF(RasterFormat.EQ.1)THEN !... Convert to *.img using gdal tools
-          dumC = 'gdal_translate -of HFA '//TRIM(demfile)//'.flt '//TRIM(demfile)//'.img'
+          dumC = 'gdal_translate -of HFA ' // TRIM(demfile) // '.flt ' &
+                  // TRIM(demfile) // '.img'
           CALL SYSTEM(TRIM(dumC))
           dumC = 'rm '//TRIM(demfile)
           CALL SYSTEM(TRIM(dumC)//'.flt')
